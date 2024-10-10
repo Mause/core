@@ -216,7 +216,7 @@ jobs:
           echo "mypy=$(cat requirements_test.txt | grep -e 'mypy.*==')" >> $GITHUB_OUTPUT
 
           touch requirements_mypyc.txt
-          cat homeassistant/package_constraints.txt | grep 'charset-normalizer==' >> requirements_mypyc.txt
+          cat homeassistant/package_constraints.txt | grep 'charset_normalizer==' >> requirements_mypyc.txt
 
       - name: Build wheels (old cython)
         uses: home-assistant/wheels@2024.07.1
@@ -242,7 +242,7 @@ jobs:
           wheels-key: ${{ secrets.WHEELS_KEY }}
           env-file: true
           apk: "bluez-dev;libffi-dev;openssl-dev;glib-dev;eudev-dev;libxml2-dev;libxslt-dev;libpng-dev;libjpeg-turbo-dev;tiff-dev;cups-dev;gmp-dev;mpfr-dev;mpc1-dev;ffmpeg-dev;gammu-dev;yaml-dev;openblas-dev;fftw-dev;lapack-dev;gfortran;blas-dev;eigen-dev;freetype-dev;glew-dev;harfbuzz-dev;hdf5-dev;libdc1394-dev;libtbb-dev;mesa-dev;openexr-dev;openjpeg-dev;uchardet-dev"
-          skip-binary: aiohttp;charset-normalizer;grpcio;multidict;SQLAlchemy;propcache;protobuf;pydantic;pymicro-vad;yarl
+          skip-binary: aiohttp;charset_normalizer;grpcio;multidict;SQLAlchemy;propcache;protobuf;pydantic;pymicro-vad;yarl
           constraints: "homeassistant/package_constraints.txt"
           requirements-diff: "requirements_diff.txt"
           requirements: "requirements_mypyc.txt"
