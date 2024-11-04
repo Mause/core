@@ -1,13 +1,8 @@
-"""
-https://developer.tuya.com/en/docs/iot/wg?id=Kbcdadk79ejok
-"""
-
+"""Support for Tuya device gateways."""
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-import json
-from typing import Any, cast
+from dataclasses import dataclass
 
 from tuya_sharing import CustomerDevice, Manager
 
@@ -20,31 +15,35 @@ from tuya_sharing import CustomerDevice, Manager
 #     LightEntityDescription,
 #     filter_supported_color_modes,
 # )
-from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from . import TuyaConfigEntry
-from .const import TUYA_DISCOVERY_NEW, DPCode, DPType, WorkMode
-from .entity import IntegerTypeData, TuyaEntity
-from .util import remap_value
+from .const import TUYA_DISCOVERY_NEW, DPCode
+from .entity import TuyaEntity
 
 
 @dataclass(frozen=True)
 class TuyaGatewayEntityDescription:
-  pass
+    """Describe a Tuya gateway entity."""
+
+    key: str
 
 
 class TuyaGatewayEntity(TuyaEntity):
-  pass
+    """Tuya gateway device."""
+
+    device: CustomerDevice
+    manager: Manager
+    description: TuyaGatewayEntityDescription
 
 
 GATEWAYS: dict[str, tuple[TuyaGatewayEntityDescription, ...]] = {
-  "gw2": (
-    TuyaGatewayEntityDescription(),
-  ),
+    # https://developer.tuya.com/en/docs/iot/wg?id=Kbcdadk79ejok
+    "gw2": (TuyaGatewayEntityDescription(key=DPCode.GATEWAY_LED),),
 }
+
 
 async def async_setup_entry(
     hass: HomeAssistant, entry: TuyaConfigEntry, async_add_entities: AddEntitiesCallback
