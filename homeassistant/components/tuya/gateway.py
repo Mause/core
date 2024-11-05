@@ -31,6 +31,7 @@ class TuyaGatewayEntityDescription:
     key: str
 
 
+@dataclass(frozen=True)
 class TuyaGatewayEntity(TuyaEntity):
     """Tuya gateway device."""
 
