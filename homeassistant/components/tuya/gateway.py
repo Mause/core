@@ -41,7 +41,7 @@ class TuyaGatewayEntity(TuyaEntity):
 
 GATEWAYS: dict[str, tuple[TuyaGatewayEntityDescription, ...]] = {
     # https://developer.tuya.com/en/docs/iot/wg?id=Kbcdadk79ejok
-    "gw2": (TuyaGatewayEntityDescription(key=DPCode.GATEWAY_LED),),
+    "gw2": (TuyaGatewayEntityDescription(key=DPCode.SWITCH_LOW_BATTERY),),
 }
 
 

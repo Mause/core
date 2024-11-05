@@ -304,6 +304,7 @@ class DPCode(StrEnum):
     SWITCH_6 = "switch_6"  # Switch 6
     SWITCH_7 = "switch_7"  # Switch 7
     SWITCH_8 = "switch_8"  # Switch 8
+    SWITCH_LOW_BATTERY = "switch_low_battery"
     SWITCH_BACKLIGHT = "switch_backlight"  # Backlight switch
     SWITCH_CHARGE = "switch_charge"
     SWITCH_CONTROLLER = "switch_controller"
